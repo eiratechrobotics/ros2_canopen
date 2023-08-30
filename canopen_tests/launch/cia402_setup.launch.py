@@ -33,7 +33,7 @@ def generate_launch_description():
             ]
         ),
         launch_arguments={
-            "node_id": "2",
+            "node_id": "6",
             "node_name": "cia402_node_1",
             "slave_config": slave_eds_path,
         }.items(),
@@ -67,8 +67,8 @@ def generate_launch_description():
                 "cia402",
                 "bus.yml",
             ),
-            "can_interface_name": "vcan0",
+            "can_interface_name": "can0",
         }.items(),
     )
 
-    return LaunchDescription([slave_node_1, device_container])
+    return LaunchDescription([device_container])

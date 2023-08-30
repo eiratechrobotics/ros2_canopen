@@ -1,15 +1,16 @@
 options:
-  dcf_path: "@BUS_CONFIG_PATH@"
+  dcf_path: "/home/user/ros2_cows/install/canopen_tests/share/canopen_tests/config/robot_control"
 
 master:
-  node_id: 1
+  node_id: 7
+  baudrate: 800
   driver: "ros2_canopen::MasterDriver"
   package: "canopen_master_driver"
   sync_period: 10000
 
 joint_1:
-  node_id: 2
-  dcf: "cia402_slave.eds"
+  node_id: 5
+  dcf: "cia402_slave_n5.eds"
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
   period: 10
@@ -21,6 +22,7 @@ joint_1:
     - {index: 0x6081, sub_index: 0, value: 1000}
     - {index: 0x6083, sub_index: 0, value: 2000}
     - {index: 0x6060, sub_index: 0, value: 7}
+    - {index: 0x3150, sub_index: 0, value: 2}
   tpdo: # TPDO needed statusword, actual velocity, actual position, mode of operation
     1:
       enabled: true
@@ -48,11 +50,11 @@ joint_1:
       cob_id: "auto"
       mapping:
       - {index: 0x607A, sub_index: 0} # target position
-      #- {index: 0x60FF, sub_index: 0} # target velocity
+      - {index: 0x60FF, sub_index: 0} # target velocity
 
 joint_2:
-  node_id: 3
-  dcf: "cia402_slave.eds"
+  node_id: 6
+  dcf: "cia402_slave_n6.eds"
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
   period: 10
@@ -65,6 +67,7 @@ joint_2:
     - {index: 0x6081, sub_index: 0, value: 1000}
     - {index: 0x6083, sub_index: 0, value: 2000}
     - {index: 0x6060, sub_index: 0, value: 7}
+    - {index: 0x3150, sub_index: 0, value: 2}
   tpdo: # TPDO needed statusword, actual velocity, actual position, mode of operation
     1:
       enabled: true
@@ -92,4 +95,4 @@ joint_2:
       cob_id: "auto"
       mapping:
       - {index: 0x607A, sub_index: 0} # target position
-      #- {index: 0x60FF, sub_index: 0} # target velocity
+      - {index: 0x60FF, sub_index: 0} # target velocity

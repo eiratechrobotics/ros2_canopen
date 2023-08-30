@@ -1,5 +1,5 @@
 options:
-  dcf_path: "/home/user/ros2_cows/install/canopen_tests/share/canopen_tests/config/cia402"
+  dcf_path: "/home/user/ros2_cows/install/canopen_tests/share/canopen_tests/config/eirabot_control"
 
 master:
   node_id: 7
@@ -8,18 +8,21 @@ master:
   package: "canopen_master_driver"
   sync_period: 10000
 
-motor_1:
+joint_1:
   node_id: 5
   dcf: "cia402_slave_n5.eds"
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
   period: 10
+  position_mode: 1
   revision_number: 0
   sdo:
     - {index: 0x60C2, sub_index: 1, value: 50} # Set interpolation time for cyclic modes to 50 ms
     - {index: 0x60C2, sub_index: 2, value: -3} # Set base 10-3s
     - {index: 0x6081, sub_index: 0, value: 1000}
     - {index: 0x6083, sub_index: 0, value: 2000}
+    - {index: 0x6060, sub_index: 0, value: 7}
+    - {index: 0x3150, sub_index: 0, value: 2}
   tpdo: # TPDO needed statusword, actual velocity, actual position, mode of operation
     1:
       enabled: true
@@ -35,10 +38,6 @@ motor_1:
       mapping:
         - {index: 0x6064, sub_index: 0} # position actual value
         - {index: 0x606c, sub_index: 0} # velocity actual position
-    3:
-      enabled: false
-    4:
-      enabled: false
   rpdo: # RPDO needed controlword, target position, target velocity, mode of operation
     1:
       enabled: true
@@ -53,18 +52,22 @@ motor_1:
       - {index: 0x607A, sub_index: 0} # target position
       - {index: 0x60FF, sub_index: 0} # target velocity
 
-motor_2:
+joint_2:
   node_id: 6
   dcf: "cia402_slave_n6.eds"
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
   period: 10
+  position_mode: 1
   revision_number: 0
+  switching_state: 2
   sdo:
     - {index: 0x60C2, sub_index: 1, value: 50} # Set interpolation time for cyclic modes to 50 ms
     - {index: 0x60C2, sub_index: 2, value: -3} # Set base 10-3s
     - {index: 0x6081, sub_index: 0, value: 1000}
     - {index: 0x6083, sub_index: 0, value: 2000}
+    - {index: 0x6060, sub_index: 0, value: 7}
+    - {index: 0x3150, sub_index: 0, value: 2}
   tpdo: # TPDO needed statusword, actual velocity, actual position, mode of operation
     1:
       enabled: true
@@ -80,10 +83,6 @@ motor_2:
       mapping:
         - {index: 0x6064, sub_index: 0} # position actual value
         - {index: 0x606c, sub_index: 0} # velocity actual position
-    3:
-      enabled: false
-    4:
-      enabled: false
   rpdo: # RPDO needed controlword, target position, target velocity, mode of operation
     1:
       enabled: true
