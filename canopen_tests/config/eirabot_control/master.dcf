@@ -734,13 +734,13 @@ AccessType=ro
 ParameterName=Node-ID 5
 DataType=0x000F
 AccessType=ro
-UploadFile=/home/user/ros2_cows/install/canopen_tests/share/canopen_tests/config/eirabot_control/joint_1.bin
+UploadFile=/home/user/ros2_cows/install/canopen_tests/share/canopen_tests/config/eirabot_control/left_wheel_joint.bin
 
 [1F22sub6]
 ParameterName=Node-ID 6
 DataType=0x000F
 AccessType=ro
-UploadFile=/home/user/ros2_cows/install/canopen_tests/share/canopen_tests/config/eirabot_control/joint_2.bin
+UploadFile=/home/user/ros2_cows/install/canopen_tests/share/canopen_tests/config/eirabot_control/right_wheel_joint.bin
 
 [1F22sub7]
 ParameterName=Node-ID 7
@@ -1462,13 +1462,13 @@ AccessType=const
 DefaultValue=2
 
 [2000sub1]
-ParameterName=joint_1: Statusword 1
+ParameterName=left_wheel_joint: Statusword 1
 DataType=0x0006
 AccessType=rww
 PDOMapping=1
 
 [2000sub2]
-ParameterName=joint_1: Modes of Operation Display 1
+ParameterName=left_wheel_joint: Modes of Operation Display 1
 DataType=0x0002
 AccessType=rww
 PDOMapping=1
@@ -1485,13 +1485,13 @@ AccessType=const
 DefaultValue=2
 
 [2001sub1]
-ParameterName=joint_1: Position Actual Value 1
+ParameterName=left_wheel_joint: Position Actual Value 1
 DataType=0x0004
 AccessType=rww
 PDOMapping=1
 
 [2001sub2]
-ParameterName=joint_1: Velocity Actual Value 1
+ParameterName=left_wheel_joint: Velocity Actual Value 1
 DataType=0x0004
 AccessType=rww
 PDOMapping=1
@@ -1508,13 +1508,13 @@ AccessType=const
 DefaultValue=2
 
 [2002sub1]
-ParameterName=joint_2: Statusword 1
+ParameterName=right_wheel_joint: Statusword 1
 DataType=0x0006
 AccessType=rww
 PDOMapping=1
 
 [2002sub2]
-ParameterName=joint_2: Modes of Operation Display 1
+ParameterName=right_wheel_joint: Modes of Operation Display 1
 DataType=0x0002
 AccessType=rww
 PDOMapping=1
@@ -1531,13 +1531,13 @@ AccessType=const
 DefaultValue=2
 
 [2003sub1]
-ParameterName=joint_2: Position Actual Value 1
+ParameterName=right_wheel_joint: Position Actual Value 1
 DataType=0x0004
 AccessType=rww
 PDOMapping=1
 
 [2003sub2]
-ParameterName=joint_2: Velocity Actual Value 1
+ParameterName=right_wheel_joint: Velocity Actual Value 1
 DataType=0x0004
 AccessType=rww
 PDOMapping=1
@@ -1554,13 +1554,13 @@ AccessType=const
 DefaultValue=2
 
 [2200sub1]
-ParameterName=joint_1: Controlword 1
+ParameterName=left_wheel_joint: Controlword 1
 DataType=0x0006
 AccessType=rwr
 PDOMapping=1
 
 [2200sub2]
-ParameterName=joint_1: Modes of Operation 1
+ParameterName=left_wheel_joint: Modes of Operation 1
 DataType=0x0002
 AccessType=rwr
 PDOMapping=1
@@ -1577,13 +1577,13 @@ AccessType=const
 DefaultValue=2
 
 [2201sub1]
-ParameterName=joint_1: Target Position 1
+ParameterName=left_wheel_joint: Target Position 1
 DataType=0x0004
 AccessType=rwr
 PDOMapping=1
 
 [2201sub2]
-ParameterName=joint_1: Target Velocity 1
+ParameterName=left_wheel_joint: Target Velocity 1
 DataType=0x0004
 AccessType=rwr
 PDOMapping=1
@@ -1600,13 +1600,13 @@ AccessType=const
 DefaultValue=2
 
 [2202sub1]
-ParameterName=joint_2: Controlword 1
+ParameterName=right_wheel_joint: Controlword 1
 DataType=0x0006
 AccessType=rwr
 PDOMapping=1
 
 [2202sub2]
-ParameterName=joint_2: Modes of Operation 1
+ParameterName=right_wheel_joint: Modes of Operation 1
 DataType=0x0002
 AccessType=rwr
 PDOMapping=1
@@ -1623,13 +1623,13 @@ AccessType=const
 DefaultValue=2
 
 [2203sub1]
-ParameterName=joint_2: Target Position 1
+ParameterName=right_wheel_joint: Target Position 1
 DataType=0x0004
 AccessType=rwr
 PDOMapping=1
 
 [2203sub2]
-ParameterName=joint_2: Target Velocity 1
+ParameterName=right_wheel_joint: Target Velocity 1
 DataType=0x0004
 AccessType=rwr
 PDOMapping=1

@@ -8,7 +8,7 @@ master:
   package: "canopen_master_driver"
   sync_period: 10000
 
-joint_1:
+left_wheel_joint:
   node_id: 5
   dcf: "cia402_slave_n5.eds"
   driver: "ros2_canopen::Cia402Driver"
@@ -52,7 +52,7 @@ joint_1:
       - {index: 0x607A, sub_index: 0} # target position
       - {index: 0x60FF, sub_index: 0} # target velocity
 
-joint_2:
+right_wheel_joint:
   node_id: 6
   dcf: "cia402_slave_n6.eds"
   driver: "ros2_canopen::Cia402Driver"
