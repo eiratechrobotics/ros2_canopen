@@ -5,9 +5,21 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+
+# find dependencies
+set(THIS_PACKAGE_INCLUDE_DEPENDS
+  hardware_interface
+  pluginlib
+  rclcpp
+  rclcpp_lifecycle
+  lely_core_libraries
+)
+
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(lely_core_libraries REQUIRED)
+foreach(Dependency IN ITEMS ${THIS_PACKAGE_INCLUDE_DEPENDS})
+  find_package(${Dependency} REQUIRED)
+endforeach()
 
 
 generate_dcf(simple)

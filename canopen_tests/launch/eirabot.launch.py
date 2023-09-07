@@ -45,13 +45,7 @@ def generate_launch_description():
     robot_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["robot_controller", "--controller-manager", "/controller_manager"],
-    )
-
-    forward_position_controller_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["forward_position_controller", "--controller-manager", "/controller_manager"],
+        arguments=["diffbot_base_controller", "--controller-manager", "/controller_manager"],
     )
 
     robot_state_publisher_node = Node(
@@ -59,13 +53,15 @@ def generate_launch_description():
         executable="robot_state_publisher",
         output="both",
         parameters=[robot_description],
+        remappings=[
+            ("/diff_drive_controller/cmd_vel_unstamped", "/cmd_vel"),
+        ],
     )
 
     nodes_to_start = [
         control_node,
         joint_state_broadcaster_spawner,
-        #robot_controller_spawner,
-        forward_position_controller_spawner,
+        robot_controller_spawner,
         robot_state_publisher_node,
     ]
 

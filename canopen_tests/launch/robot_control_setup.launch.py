@@ -114,7 +114,7 @@ def generate_launch_description():
     nodes_to_start = [
         control_node,
         joint_state_broadcaster_spawner,
-        # robot_controller_spawner
+        #robot_controller_spawner,
         forward_position_controller_spawner,
         robot_state_publisher_node,
     ]
