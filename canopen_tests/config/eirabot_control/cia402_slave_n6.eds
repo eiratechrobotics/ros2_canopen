@@ -1572,7 +1572,7 @@ SubNumber=8
 [3312sub0]
 ParameterName=PID-Controller - differential factor
 ObjectType=0x7
-DataType=0x0006
+DataType=0x0007
 AccessType=rw
 DefaultValue=5000
 PDOMapping=1
@@ -1664,7 +1664,7 @@ HighLimit=2000
 [3318]
 ParameterName=PID-Controller - differential sample time
 ObjectType=0x7
-DataType=0x0003
+DataType=0x0007
 AccessType=rw
 DefaultValue=0
 PDOMapping=1
