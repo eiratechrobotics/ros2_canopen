@@ -14,15 +14,40 @@ left_wheel_joint:
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
   period: 10
-  position_mode: 1
+  velocity_mode: 1
   revision_number: 0
   sdo:
     - {index: 0x60C2, sub_index: 1, value: 50} # Set interpolation time for cyclic modes to 50 ms
     - {index: 0x60C2, sub_index: 2, value: -3} # Set base 10-3s
-    - {index: 0x6081, sub_index: 0, value: 1000}
-    - {index: 0x6083, sub_index: 0, value: 2000}
-    - {index: 0x6060, sub_index: 0, value: 7}
-    - {index: 0x3150, sub_index: 0, value: 2}
+    - {index: 0x6081, sub_index: 0, value: 0}
+    - {index: 0x6083, sub_index: 0, value: 60000}
+    - {index: 0x6060, sub_index: 0, value: 2}
+    - {index: 0x3150, sub_index: 0, value: 2} # Brakes
+    - {index: 0x3221, sub_index: 0, value: 50000} # Current Positive
+    - {index: 0x3223, sub_index: 0, value: 50000} # Current Negative
+    - {index: 0x3224, sub_index: 1, value: 50000} # Dynamic current limit peak
+    - {index: 0x3224, sub_index: 2, value: 50000} # Dynamic current limit continuous
+    - {index: 0x3224, sub_index: 3, value: 2000} # Dynamic current limit time
+    # - {index: 0x3310, sub_index: 0, value: 800} # PID Gain
+    - {index: 0x3311, sub_index: 0, value: 0} # PID Integral Factor
+    - {index: 0x3312, sub_index: 0, value: 0} # PID differential factor      
+    - {index: 0x3312, sub_index: 1, value: 5} # PID differential factor stop    
+    - {index: 0x3321, sub_index: 0, value: 3700} # Max Velocity Pos
+    - {index: 0x3323, sub_index: 0, value: 3700} # Max Velocity Neg 
+    - {index: 0x3344, sub_index: 0, value: 15000} # Quick-stop deceleration - delta V 
+    - {index: 0x3380, sub_index: 0, value: 180000} # Acceleration
+    - {index: 0x3381, sub_index: 0, value: 180000} # Deceleration
+    - {index: 0x3382, sub_index: 0, value: 230000} # Quick Stop Deceleration
+    - {index: 0x3510, sub_index: 0, value: 900} # SVel PI-Controller - gain
+    - {index: 0x3511, sub_index: 0, value: 125} # SVel PI-Controller - integral factor
+    - {index: 0x3900, sub_index: 0, value: 1} # Motor Type
+    - {index: 0x3902, sub_index: 0, value: 48000} # Voltage
+    - {index: 0x3910, sub_index: 0, value: 8} # Pole Number
+    - {index: 0x3911, sub_index: 0, value: 2} # Polarity
+    - {index: 0x3962, sub_index: 0, value: 4096} # Encoders
+    
+
+
   tpdo: # TPDO needed statusword, actual velocity, actual position, mode of operation
     1:
       enabled: true
@@ -58,16 +83,38 @@ right_wheel_joint:
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
   period: 10
-  position_mode: 1
+  velocity_mode: 1
   revision_number: 0
   switching_state: 2
   sdo:
     - {index: 0x60C2, sub_index: 1, value: 50} # Set interpolation time for cyclic modes to 50 ms
     - {index: 0x60C2, sub_index: 2, value: -3} # Set base 10-3s
-    - {index: 0x6081, sub_index: 0, value: 1000}
-    - {index: 0x6083, sub_index: 0, value: 2000}
-    - {index: 0x6060, sub_index: 0, value: 7}
-    - {index: 0x3150, sub_index: 0, value: 2}
+    - {index: 0x6081, sub_index: 0, value: 0}
+    - {index: 0x6083, sub_index: 0, value: 60000}
+    - {index: 0x6060, sub_index: 0, value: 2}
+    - {index: 0x3150, sub_index: 0, value: 2} # Brakes
+    - {index: 0x3221, sub_index: 0, value: 50000} # Current Positive
+    - {index: 0x3223, sub_index: 0, value: 50000} # Current Negative
+    - {index: 0x3224, sub_index: 1, value: 50000} # Dynamic current limit peak
+    - {index: 0x3224, sub_index: 2, value: 50000} # Dynamic current limit continuous
+    - {index: 0x3224, sub_index: 3, value: 2000} # Dynamic current limit time
+    # - {index: 0x3310, sub_index: 0, value: 800} # PID Gain
+    - {index: 0x3311, sub_index: 0, value: 0} # PID Integral Factor
+    - {index: 0x3312, sub_index: 0, value: 0} # PID differential factor      
+    - {index: 0x3312, sub_index: 1, value: 5} # PID differential factor stop    
+    - {index: 0x3321, sub_index: 0, value: 3700} # Max Velocity Pos
+    - {index: 0x3323, sub_index: 0, value: 3700} # Max Velocity Neg 
+    - {index: 0x3344, sub_index: 0, value: 15000} # Quick-stop deceleration - delta V 
+    - {index: 0x3380, sub_index: 0, value: 180000} # Acceleration
+    - {index: 0x3381, sub_index: 0, value: 180000} # Deceleration
+    - {index: 0x3382, sub_index: 0, value: 230000} # Quick Stop Deceleration
+    - {index: 0x3510, sub_index: 0, value: 900} # SVel PI-Controller - gain
+    - {index: 0x3511, sub_index: 0, value: 125} # SVel PI-Controller - integral factor
+    - {index: 0x3900, sub_index: 0, value: 1} # Motor Type
+    - {index: 0x3902, sub_index: 0, value: 48000} # Voltage
+    - {index: 0x3910, sub_index: 0, value: 8} # Pole Number
+    - {index: 0x3911, sub_index: 0, value: 2} # Polarity
+    - {index: 0x3962, sub_index: 0, value: 4096} # Encoders
   tpdo: # TPDO needed statusword, actual velocity, actual position, mode of operation
     1:
       enabled: true

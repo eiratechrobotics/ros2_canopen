@@ -38,8 +38,33 @@ SupportedObjects=3
 3=0x1018
 
 [ManufacturerObjects]
-SupportedObjects=1
+SupportedObjects=25
 1=0x3150
+2=0x3221
+3=0x3223
+4=0x3224
+5=0x3310
+6=0x3311
+7=0x3312
+8=0x3314
+9=0x3318
+10=0x3321
+11=0x3323
+12=0x3344
+13=0x3345
+14=0x3350
+15=0x3380
+16=0x3381
+17=0x3382
+18=0x3510
+19=0x3511
+20=0x3550
+21=0x3900
+22=0x3902
+23=0x3910
+24=0x3911
+25=0x3962
+
 
 [OptionalObjects]
 SupportedObjects=67
@@ -1441,6 +1466,8 @@ AccessType=ro
 DefaultValue=0x00040192
 PDOMapping=0
 
+
+
 [3150]
 ParameterName=Digital outputs - Port0
 ObjectType=0x7
@@ -1450,3 +1477,367 @@ DefaultValue=0
 PDOMapping=0
 LowLimit=0
 HighLimit=15
+
+[3221]
+ParameterName=Current limit - max. positiv
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=25000
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3223]
+ParameterName=Current limit - max. negativ
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=25000
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3224]
+ParameterName=Dynamic current limit I*t - mode
+ObjectType=0x9
+SubNumber=4
+
+[3224sub0]
+ParameterName=Dynamic current limit I*t - mode
+ObjectType=0x7
+DataType=0x0005
+AccessType=rw
+DefaultValue=1
+PDOMapping=1
+
+[3224sub1]
+ParameterName=Dynamic current limit I*t - peak current
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=20000
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+ParameterValue=50000
+
+[3224sub2]
+ParameterName=Dynamic current limit I*t - continues current
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=20000
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+ParameterValue=50000
+
+[3224sub3]
+ParameterName=Dynamic current limit I*t - time
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=10000
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+ParameterValue=2000
+
+[3310]
+ParameterName=PID-Controller - gain
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=75
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3311]
+ParameterName=PID-Controller - integral factor
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=0
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3312]
+ParameterName=PID-Controller - differential factor
+ObjectType=0x9
+SubNumber=8
+
+[3312sub0]
+ParameterName=PID-Controller - differential factor
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=5000
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+ParameterValue=0
+
+[3312sub1]
+ParameterName=PID-Controller - differential factor Stop
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=10
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+ParameterValue=5
+
+[3312sub2]
+ParameterName=PID-Controller - differential factor AccPos
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=0xFFFF
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3312sub3]
+ParameterName=PID-Controller - differential factor ConstPos
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=0xFFFF
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3312sub4]
+ParameterName=PID-Controller - differential factor DecPos
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=0xFFFF
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3312sub5]
+ParameterName=PID-Controller - differential factor AccNeg
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=0xFFFF
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3312sub6]
+ParameterName=PID-Controller - differential factor ConstNeg
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=0xFFFF
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3312sub7]
+ParameterName=PID-Controller - differential factor DecNeg
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=0xFFFF
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3314]
+ParameterName=PID-Controller - velocity feed forward
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=1000
+PDOMapping=1
+LowLimit=0
+HighLimit=2000
+
+[3318]
+ParameterName=PID-Controller - differential sample time
+ObjectType=0x7
+DataType=0x0003
+AccessType=rw
+DefaultValue=0
+PDOMapping=1
+LowLimit=-255
+HighLimit=1000
+
+[3321]
+ParameterName=Velocity max. limit - positiv direction
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=3700
+PDOMapping=1
+LowLimit=0
+HighLimit=2147483647
+
+[3323]
+ParameterName=Velocity max. limit - negativ direction
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=3700
+PDOMapping=1
+LowLimit=0
+HighLimit=2147483647
+
+[3344]
+ParameterName=Quick-stop deceleration - delta V
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=15000
+PDOMapping=1
+LowLimit=0
+HighLimit=4294967295
+
+[3345]
+ParameterName=Velocity quick-stop deceleration - delta T
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=1000
+PDOMapping=1
+LowLimit=1
+HighLimit=4294967295
+
+[3350]
+ParameterName=Velocity feedback
+ObjectType=0x9
+SubNumber=2
+
+[3350sub0]
+ParameterName=Velocity feedback
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=0x96A
+PDOMapping=1
+
+[3350sub3]
+ParameterName=Velocity feedback - reference
+ObjectType=0x7
+DataType=0x0004
+AccessType=rw
+DefaultValue=1000
+PDOMapping=1
+
+[3380]
+ParameterName=Velocity acceleration in [rev/min\B2]
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=90000
+PDOMapping=1
+LowLimit=0
+HighLimit=2147483647
+
+[3381]
+ParameterName=Velocity deceleration in [rev/min\B2]
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=90000
+PDOMapping=1
+LowLimit=0
+HighLimit=2147483647
+
+[3382]
+ParameterName=Velocity quick-stop deceleration in [rev/min\B2]
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=300000
+PDOMapping=1
+LowLimit=0
+HighLimit=2147483647
+ParameterValue=230000
+
+[3510]
+ParameterName=SVel PI-Controller - gain
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=900
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3511]
+ParameterName=SVel PI-Controller - integral factor
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=125
+PDOMapping=1
+LowLimit=0
+HighLimit=65535
+
+[3550]
+ParameterName=SVel feedback
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=0x96A
+PDOMapping=1
+
+[3900]
+ParameterName=Motor type
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=0
+PDOMapping=1
+ParameterValue=1
+
+[3902]
+ParameterName=Motor rated voltage
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=24000
+PDOMapping=1
+LowLimit=0
+HighLimit=60000
+
+[3910]
+ParameterName=Motor pole number
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=4
+PDOMapping=1
+LowLimit=1
+HighLimit=100
+ParameterValue=8
+
+[3911]
+ParameterName=Motor polarity
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=0x19
+PDOMapping=1
+LowLimit=0
+HighLimit=255
+ParameterValue=0x02
+
+[3962]
+ParameterName=Encoder resolution in counts
+ObjectType=0x7
+DataType=0x0007
+AccessType=rw
+DefaultValue=4096
+PDOMapping=1
+LowLimit=1
+HighLimit=60000
