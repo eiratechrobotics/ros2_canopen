@@ -32,7 +32,7 @@ sudo apt install net-tools vim can-utils ros-humble-ros2-control ros-humble-ros2
 Clone ros2_canopen into your ```ros2_cows``` source folder and install dependencies
 
 ```
-git clone ________
+git clone git@github.com:eiratechrobotics/Eirabot-Ros.git
 cd ..
 rosdep install --from-paths src/ros2_canopen --ignore-src -r -y
 ```
