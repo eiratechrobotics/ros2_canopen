@@ -45,8 +45,7 @@ left_wheel_joint:
     - {index: 0x3910, sub_index: 0, value: 8} # Pole Number
     - {index: 0x3911, sub_index: 0, value: 25} # Polarity
     - {index: 0x3962, sub_index: 0, value: 4096} # Encoders
-    
-
+  
 
   tpdo: # TPDO needed statusword, actual velocity, actual position, mode of operation
     1:
@@ -115,6 +114,7 @@ right_wheel_joint:
     - {index: 0x3910, sub_index: 0, value: 8} # Pole Number
     - {index: 0x3911, sub_index: 0, value: 2} # Polarity
     - {index: 0x3962, sub_index: 0, value: 4096} # Encoders
+    
   tpdo: # TPDO needed statusword, actual velocity, actual position, mode of operation
     1:
       enabled: true

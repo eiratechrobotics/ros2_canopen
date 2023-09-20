@@ -2,7 +2,6 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="test_robot">
     <xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/diffbot.materials.xacro"/>
     <xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/diffbot_description.urdf.xacro"/>
-    <!--<xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/robot_controller.macro.xacro"/>-->
     <xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/robot_controller.ros2_control.xacro"/>
 
     <xacro:diffbot
