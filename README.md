@@ -5,9 +5,9 @@
 ### Notes: 
 This project is based on the humble branch of the [ROS2 CANOpen Stack](https://github.com/ros-industrial/ros2_canopen/tree/humble) which is currently under development. As such, a number of workarounds have been implemented to get this demo up and running.
 
-Problems with ```cogen``` (Custom cmake macro used to streamline bus.yml files) not working correctly.  ```generate_dcf``` is used instead. However, for this reason, two almost identical versions of the slave eds file must be used to account for different node ids. As well as this, hardcoded file loactions are used for the time being, but could be done away with once ```cogen``` is working.
+Problems with ```cogen``` (Custom cmake macro used to streamline bus.yml files) not working correctly.  ```generate_dcf``` is used instead. However, for this reason, two almost identical versions of the slave eds file must be used to account for different node ids. As well as this, hardcoded file locations are used for the time being, but could be done away with once ```cogen``` is working.
 
-The project has been confirmed to run on a Kontron PC running a minimal installation of Ubuntu Server 22.04, however this leaves minimal harddisk space (approx. 100 Mb) after all dependencies are installed.
+The project has been confirmed to run on a Kontron PC running a minimal installation of Ubuntu Server 22.04, however this leaves minimal hard disk space (approx. 100 Mb) after all dependencies are installed.
 
 ### File structure
 Due to hardcoded file names, the project must be built in a directory called ```ros2_cows``` in the Kontron PC's home directory.
@@ -60,7 +60,7 @@ Start the CAN bus.
 sudo ip link set can0 up type can bitrate 800000
 ```
 
-Workaround: Project must first be run as root user to allow CAN permissions. Run as reqular user after this.
+Workaround: Project must first be run as root user to allow CAN permissions. Run as regular user after this.
 ```
 sudo -i
 
