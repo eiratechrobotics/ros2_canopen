@@ -32,7 +32,7 @@ sudo apt install net-tools vim can-utils ros-humble-ros2-control ros-humble-ros2
 Clone ros2_canopen into your ```ros2_cows``` source folder and install dependencies
 
 ```
-git clone -b eirabot git@github.com:eiratechrobotics/Eirabot-Ros.git
+git clone -b eirabot git@github.com:eiratechrobotics/ros2_canopen.git
 cd ..
 rosdep install --from-paths src/ros2_canopen --ignore-src -r -y
 ```
@@ -46,6 +46,8 @@ In the ```ros2_cows``` directory run the following command:
 ```
 colcon build
 ```
+
+Note: The build process will flag a number of warnings in relation to the dcf file. This is a result of the fact that the Dunker motor dcf file does not comply with cia301. These warnings can be ignored.
 
 When working with the ```canopen_tests``` package in particular, the following command allows for quicker build times:
 
