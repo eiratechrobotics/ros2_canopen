@@ -1,0 +1,16 @@
+@startuml Current ROS2_CANOpen Understanding
+skinparam componentStyle rectangle
+package "ROS2 Control"{
+    [+ controller_manager] as cm
+    [+ diffbot_base_controller] as dbc
+    [+ joint_state_broadcaster] as jsb
+}
+package "ROS2 CANOpen"{
+    [device_container] as dc
+    [left_wheel_joint] as lwj
+    [master] as m
+    [right_wheel_joint] as rwj
+}
+[+ robot_state_publisher] as rsp
+[~ teleop_twist_keyboard] as ttk
+@enduml

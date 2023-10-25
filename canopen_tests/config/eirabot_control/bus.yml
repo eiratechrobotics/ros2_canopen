@@ -1,5 +1,5 @@
 options:
-  dcf_path: "/home/user/ros2_cows/install/canopen_tests/share/canopen_tests/config/eirabot_control"
+  dcf_path: "/home/fionnomuiri/canTutorials/ros2_cows/install/canopen_tests/share/canopen_tests/config/eirabot_control"
 
 master:
   node_id: 7
@@ -21,7 +21,7 @@ left_wheel_joint:
     - {index: 0x60C2, sub_index: 2, value: -3} # Set base 10-3s
     - {index: 0x6081, sub_index: 0, value: 0}
     - {index: 0x6083, sub_index: 0, value: 60000}
-    - {index: 0x6060, sub_index: 0, value: 2}
+    - {index: 0x6060, sub_index: 0, value: 1}
     - {index: 0x3150, sub_index: 0, value: 2} # Brakes
     - {index: 0x3221, sub_index: 0, value: 50000} # Current Positive
     - {index: 0x3223, sub_index: 0, value: 50000} # Current Negative
@@ -90,7 +90,7 @@ right_wheel_joint:
     - {index: 0x60C2, sub_index: 2, value: -3} # Set base 10-3s
     - {index: 0x6081, sub_index: 0, value: 0}
     - {index: 0x6083, sub_index: 0, value: 60000}
-    - {index: 0x6060, sub_index: 0, value: 2}
+    - {index: 0x6060, sub_index: 0, value: 1}
     - {index: 0x3150, sub_index: 0, value: 2} # Brakes
     - {index: 0x3221, sub_index: 0, value: 50000} # Current Positive
     - {index: 0x3223, sub_index: 0, value: 50000} # Current Negative

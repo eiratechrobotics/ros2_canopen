@@ -20,8 +20,6 @@ from launch_ros.substitutions import FindPackageShare
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
-from launch.actions import RegisterEventHandler
-from launch.event_handlers import OnProcessExit
 
 def generate_launch_description():
 
@@ -112,11 +110,16 @@ def generate_launch_description():
     )
 
     nodes_to_start = [
+        # slave_node_2,
+        # slave_node_1,
         control_node,
         joint_state_broadcaster_spawner,
-        #robot_controller_spawner,
+        # robot_controller_spawner,
         forward_position_controller_spawner,
         robot_state_publisher_node,
+        slave_node_1,
+        slave_node_2,
+        # rviz_node
     ]
 
     return LaunchDescription(nodes_to_start)

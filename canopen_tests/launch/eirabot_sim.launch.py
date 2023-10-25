@@ -10,7 +10,7 @@ from launch.actions import RegisterEventHandler
 from launch.event_handlers import OnProcessExit
 
 def generate_launch_description():
-    can_interface_name = "can0"
+    can_interface_name = "vcan0"
 
     robot_description_content = Command(
         [
@@ -62,9 +62,41 @@ def generate_launch_description():
         ],
     )
 
+    slave_config_n5 = PathJoinSubstitution(
+        [FindPackageShare("canopen_tests"), "config/eirabot_control", "cia402_slave_n5.eds"]
+    )
+
+    slave_config_n6 = PathJoinSubstitution(
+        [FindPackageShare("canopen_tests"), "config/eirabot_control", "cia402_slave_n6.eds"]
+    )
+
+    slave_launch = PathJoinSubstitution(
+        [FindPackageShare("canopen_fake_slaves"), "launch", "cia402_slave.launch.py"]
+    )
+
+    slave_node_1 = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(slave_launch),
+        launch_arguments={
+            "node_id": "5",
+            "node_name": "left_wheel_slave",
+            "slave_config": slave_config_n5,
+        }.items(),
+    )
+
+    slave_node_2 = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(slave_launch),
+        launch_arguments={
+            "node_id": "6",
+            "node_name": "right_wheel_slave",
+            "slave_config": slave_config_n6,
+        }.items(),
+    )
+
     nodes_to_start = [
         control_node,
         joint_state_broadcaster_spawner,
+        slave_node_1,
+        slave_node_2,
         robot_controller_spawner,
         robot_state_publisher_node,
     ]

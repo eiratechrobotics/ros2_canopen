@@ -69,6 +69,13 @@ public:
       RCLCPP_INFO(rclcpp::get_logger("cia402_slave"), "Joined interpolated_position_mode thread.");
       interpolated_position_mode.join();
     }
+    //###########################
+    if (velocity_mode.joinable())
+    {
+      RCLCPP_INFO(rclcpp::get_logger("cia402_slave"), "Joined velocity_mode thread.");
+      velocity_mode.join();
+    }
+    //###########################
   }
 
 protected:
@@ -156,6 +163,9 @@ protected:
   std::thread cyclic_position_mode;
   std::thread cyclic_velocity_mode;
   std::thread interpolated_position_mode;
+  //###########################
+  std::thread velocity_mode;
+  //###########################
 
   double cycle_time;
 
@@ -329,6 +339,31 @@ protected:
   }
 
   void run_position_mode() {}
+
+  //############################
+  void run_velocity_mode()
+  {
+    double target_velocity = static_cast<double>(((int32_t)(*this)[0x60FF][0])) / 1000.0;
+    double actual_velocity = static_cast<double>(((int32_t)(*this)[0x606c][0])) / 1000.0;
+    double actual_position = static_cast<double>(((int32_t)(*this)[0x6064][0])) / 1000.0;
+
+    while ((state.load() == InternalState::Operation_Enable) &&
+           (operation_mode.load() == Profiled_Velocity) && (rclcpp::ok()))
+    {
+      std::this_thread::sleep_for(std::chrono::milliseconds(10));
+      target_velocity = static_cast<double>(((int32_t)(*this)[0x60FF][0])) / 1000.0;
+      actual_position += actual_velocity / 1000;
+
+      (*this)[0x6064][0] = (int32_t)(actual_position * 1000);
+
+      if (target_velocity != actual_velocity)
+      {
+        actual_velocity = target_velocity;
+        (*this)[0x606C][0] = (int32_t)(actual_speed * 1000);
+      }
+    }
+  }
+  //############################
 
   void set_new_status_word_and_state()
   {
@@ -518,6 +553,14 @@ protected:
           rclcpp::get_logger("cia402_slave"), "Joined interpolated_position_mode thread.");
         interpolated_position_mode.join();
       }
+      //############################
+      if (velocity_mode.joinable())
+      {
+        RCLCPP_INFO(rclcpp::get_logger("cia402_slave"), "Joined velocity_mode thread.");
+        velocity_mode.join();
+      }
+      //############################
+
       old_operation_mode.store(operation_mode.load());
       switch (operation_mode.load())
       {
@@ -530,6 +573,11 @@ protected:
         case Interpolated_Position:
           start_interpolated_pos_mode();
           break;
+        //############################
+        case Profiled_Velocity:
+          start_velocity_mode();
+          break;
+        //############################
         default:
           break;
       }
@@ -552,6 +600,13 @@ protected:
     interpolated_position_mode =
       std::thread(std::bind(&CIA402MockSlave::run_interpolated_position_mode, this));
   }
+
+  //############################
+  void start_velocity_mode()
+  {
+    velocity_mode = std::thread(std::bind(&CIA402MockSlave::run_velocity_mode, this));
+  }
+  //############################
 
   void on_quickstop_active()
   {
