@@ -3,13 +3,15 @@
 
     <xacro:arg name="can_interface_name" default="vcan0"/>
 
-    <xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/diffbot.materials.xacro"/>
-    <xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/diffbot_description.urdf.xacro"/>
+    <!-- <xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/diffbot.materials.xacro"/> -->
+    <!-- <xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/diffbot_description.urdf.xacro"/> -->
+    <xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/materials.xacro"/>
+    <xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/Eirabot.xacro"/>
     <xacro:include filename="$(find canopen_tests)/urdf/eirabot_controller/robot_controller.ros2_control.xacro"/>
 
-    <xacro:diffbot
+    <!-- <xacro:diffbot
         prefix=""
-        />
+        /> -->
 
     <xacro:robot_control_control
         name="test_robot"

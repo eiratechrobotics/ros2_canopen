@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<robot name="Eirabot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="6.42240801668372e-08 -2.62331487654833e-08 0.13943196814433906" rpy="0 0 0"/>
+    <mass value="1184.7948159540017"/>
+    <inertia ixx="44.256163" iyy="83.780241" izz="112.699345" ixy="-1e-05" iyz="-0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find canopen_tests)/meshes/eirabot/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find canopen_tests)/meshes/eirabot/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="-8.313767391916902e-17 0.04124930094834872 -0.000997448238037768" rpy="0 0 0"/>
+    <mass value="8.587603035248412"/>
+    <inertia ixx="0.01473" iyy="0.023947" izz="0.014738" ixy="-0.0" iyz="0.000263" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 -0.25 -0.057" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find canopen_tests)/meshes/eirabot/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 -0.25 -0.057" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find canopen_tests)/meshes/eirabot/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="4.9882604351501426e-17 -0.04124930094834872 -0.0009974482380377542" rpy="0 0 0"/>
+    <mass value="8.58760303524841"/>
+    <inertia ixx="0.01473" iyy="0.023947" izz="0.014738" ixy="-0.0" iyz="-0.000263" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.25 -0.057" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find canopen_tests)/meshes/eirabot/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.25 -0.057" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find canopen_tests)/meshes/eirabot/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin xyz="0.0 0.25 0.057" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin xyz="0.0 -0.25 0.057" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+</robot>
