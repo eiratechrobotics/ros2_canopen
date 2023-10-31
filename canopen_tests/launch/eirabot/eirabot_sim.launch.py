@@ -57,9 +57,16 @@ def generate_launch_description():
         executable="robot_state_publisher",
         output="both",
         parameters=[robot_description],
-        remappings=[
-            ("/diff_drive_controller/cmd_vel_unstamped", "/cmd_vel"),
-        ],
+    )
+
+    twist_mux_params = PathJoinSubstitution([FindPackageShare("canopen_tests"), 'config/eirabot_control', 'twist_mux.yaml'])
+
+    twist_mux = Node(
+        package='twist_mux',
+        executable='twist_mux',
+        output='screen',
+        parameters=[twist_mux_params],
+        remappings=[('/cmd_vel_out','/diffbot_base_controller/cmd_vel_unstamped')]
     )
 
     slave_config_n5 = PathJoinSubstitution(
@@ -99,6 +106,7 @@ def generate_launch_description():
         slave_node_2,
         robot_controller_spawner,
         robot_state_publisher_node,
+        twist_mux,
     ]
 
     return LaunchDescription(nodes_to_start)

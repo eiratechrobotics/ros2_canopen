@@ -34,7 +34,7 @@ generate_dcf(robot_control)
 generate_dcf(eirabot_control)
 
 install(DIRECTORY
-  launch rviz urdf launch_tests meshes
+  launch rviz urdf launch_tests meshes maps
   DESTINATION share/${PROJECT_NAME}
 )
 
