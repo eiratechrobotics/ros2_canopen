@@ -1,5 +1,13 @@
 # ROS2 CANopen
 
+<span style="color:red">
+
+# Important
+
+**This Repo was used for initial testing but is now depricated!!!** All future projects which would like to use ros2_canopen should use it as a dependency rather than editing ros2_canopen itself
+
+</span>
+
 ## Eirabot
 
 ### Notes: 
